@@ -8,10 +8,16 @@ function App() {
   const [shortlist, setShortlist] = useState([]);
 
   useEffect(() => {
-    axios.get("http://localhost:5000/api/applicants").then((res) => {
+  axios
+    .get("https://hire5-app.onrender.com/api/applicants")
+    .then((res) => {
       setApplicants(res.data);
+    })
+    .catch((err) => {
+      console.error("Error fetching applicants:", err);
     });
-  }, []);
+}, []);
+
 
   const toggleShortlist = (candidate) => {
     setShortlist((prev) => {
